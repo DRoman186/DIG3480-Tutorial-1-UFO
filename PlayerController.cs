@@ -49,13 +49,23 @@ public class PlayerController : MonoBehaviour
 
             SetCountText();
         }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count - 1;
+            SetCountText();
+        }
+        if (count == 12) 
+        {
+             transform.position = new Vector2(59.2f, -7.1f); 
+        }
     }
 
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
+        countText.text = "Score: " + count.ToString();
 
-        if (count >= 12)
-            winText.text = "You win! Game created by Derrick Roman.";
+        if (count >= 20)
+            winText.text = "Congratulations for winning! Game made by Derrick Roman.";
     }
 }
